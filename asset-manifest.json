@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/michaelsilvacanto/static/css/main.e6c13ad2.css",
+    "main.js": "/michaelsilvacanto/static/js/main.222a757b.js",
+    "static/js/453.2bef34ff.chunk.js": "/michaelsilvacanto/static/js/453.2bef34ff.chunk.js",
+    "index.html": "/michaelsilvacanto/index.html",
+    "main.e6c13ad2.css.map": "/michaelsilvacanto/static/css/main.e6c13ad2.css.map",
+    "main.222a757b.js.map": "/michaelsilvacanto/static/js/main.222a757b.js.map",
+    "453.2bef34ff.chunk.js.map": "/michaelsilvacanto/static/js/453.2bef34ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.222a757b.js"
+  ]
+}
