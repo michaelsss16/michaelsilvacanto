@@ -1,8 +1,8 @@
+import MarkdownRenderer from "../Components/MarkdownRenderer";
+
 const Modulo1 = () => {
     return (
-        <h1>
-            Módulo 1
-        </h1>
+        <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-1.md" />
     );
 }
 

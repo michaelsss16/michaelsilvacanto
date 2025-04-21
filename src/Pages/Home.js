@@ -1,20 +1,10 @@
 import React from "react";
-import Footer from "../Components/Footer";
 
 const Home = () => {
   return (
     <div>
       <div>
         <h1>Domine sua Voz</h1>
-        <div>
-          <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Módulos</a></li>
-            <li><a href="#">Depoimentos</a></li>
-            <li><a href="#">Contato</a></li>
-          </ul>
-        </div>
       </div>
 
       <div>
@@ -64,7 +54,7 @@ const Home = () => {
         <h3>Pronto para começar?</h3>
         <a href="#">Matricule-se Agora</a>
       </div>
-</div>
+    </div>
   );
 };
 

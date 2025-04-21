@@ -14,6 +14,7 @@ const Header = () => {
         <div>
           <Link to="/">Início</Link> <br></br>
           <Link to="/sobre">Sobre</Link><br></br>
+          <Link to="/modulos">Conteúdo</Link><br></br>
           <div>
             <button
               onClick={toggleMenu}
