@@ -1,13 +1,144 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* index.css */
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  background-color: #ffffff; /* Fundo principal branco */
+  color: #222222; /* Texto preto suave */
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+/* Cores */
+:root {
+  --primary-blue: #1a73e8;
+  --dark-blue: #174ea6;
+  --light-gray: #f1f3f4;
+  --medium-gray: #5f6368;
+  --black: #202124;
+  --purple: #6f42c1;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, var(--primary-blue), var(--purple));
+  color: #ffffff;
+  padding: 1rem 2rem;
+}
+
+/* Footer */
+footer {
+  background-color: var(--purple);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Links */
+a {
+  color: var(--dark-blue);
+  font-style: italic;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Títulos */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 0.75rem;
+}
+
+/* Botões */
+button {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover,
+button:focus {
+  background-color: var(--dark-blue);
+  outline: 3px solid var(--primary-blue);
+  outline-offset: 3px;
+}
+
+/* Seções principais */
+main {
+  background-color: var(--light-gray);
+  padding: 2rem;
+}
+
+/* Cards (opcional para áreas de conteúdo) */
+.card {
+  background: #ffffff;
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Melhorando responsividade básica */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Parágrafos */
+p {
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+/* Espaçamento entre seções */
+section {
+  padding: 4rem 0;
+}
+
+/* Responsividade Avançada */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  header,
+  footer {
+    text-align: center;
+  }
+
+  main {
+    padding: 1rem;
+  }
 }
