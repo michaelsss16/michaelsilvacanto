@@ -309,3 +309,18 @@ export const M1A5 = () => {
         </main>
     );
 }
+
+export const M1A6 = () => {
+    return (
+        <main>
+            <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-6.md" />
+        </main>
+    );
+};
+
+export const M1A7 = () => {
+    return (
+        <main>
+            <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-7.md" />
+        </main>);
+};

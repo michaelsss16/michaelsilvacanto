@@ -35,8 +35,11 @@ export default function Modulos () {
       aulas: [
         "Introdução ao canto",
         "O aparelho fonador",
+        "Alongamento corporal",
         "Aquecimento e desaquecimento vocal",
-        "Respiração"
+        "Respiração",
+        "Mitos e verdades sobre o canto",
+        "Conclusão"
       ],
       basePath: "/modulo-1"
     },
