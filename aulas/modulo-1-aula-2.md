@@ -30,6 +30,6 @@
 
 ## Material extra
 
-*adicionar links
-[Video aula] anatomia e fisiologia da voz
-[Artigo] Anatomia e fisiologia na produção da voz
+[Artigo: Anatomia e fisiologia na produção da voz](https://voicefoundation.org/health-science/voice-disorders/anatomy-physiology-of-voice-production/)
+
+[Vídeo aula: anatomia e fisiologia da voz](https://www.youtube.com/watch?v=NF1OXivKM30)
