@@ -31,14 +31,14 @@ body {
 
 /* Header */
 header {
-  background: linear-gradient(90deg, var(--primary-blue), var(--purple));
-  color: #ffffff;
+  background: #adadad;
+  color: #222222; /* texto escuro para contraste */
   padding: 1rem 2rem;
 }
 
 /* Footer */
 footer {
-  background-color: var(--purple);
+  background-color: #adadad; 
   color: #ffffff;
   padding: 1rem 2rem;
   text-align: center;

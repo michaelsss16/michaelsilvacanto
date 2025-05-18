@@ -72,6 +72,14 @@ export const M1A1 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-1.md" />
+
+            <h2>Material extra</h2>
+            <h3>Podcast</h3>
+            <audio controls>
+  <source src="/michaelsilvacanto/podcasts/Podcast-M1A1.wav" type="audio/wav" />
+  Seu navegador não suporta o elemento de áudio.
+</audio>
+
             <PerguntasForm perguntas={perguntas} />
         </main>
     );
@@ -152,6 +160,13 @@ export const M1A2 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-2.md" />
+
+            <h3>Podcast</h3>
+            <audio controls>
+  <source src="/michaelsilvacanto/podcasts/Podcast-M1A2.wav" type="audio/wav" />
+  Seu navegador não suporta o elemento de áudio.
+</audio>
+
             <PerguntasForm perguntas={perguntas} />
         </main>
     );
