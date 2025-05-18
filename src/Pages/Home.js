@@ -1,5 +1,6 @@
 import React from "react";
 import Modulos from "./Modulos.js";
+import {WhatsappButton }from "../Components/Contatos.js"
 
 const Home = () => {
   return (
@@ -38,6 +39,7 @@ const Home = () => {
       <div>
         <h3>Pronto para começar?</h3>
         <p>Me chama no whatsapp!</p>
+        <WhatsappButton />
       </div>
     </div>
   );
