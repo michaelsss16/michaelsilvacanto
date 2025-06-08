@@ -7,7 +7,8 @@ import NotFound from './Pages/NotFound.js';
 import Sobre from './Pages/Sobre.js';
 import Header from "./Components/Header.js";
 import Modulos from './Pages/Modulos.js'; 
-import {Playbacks }from './Pages/Playbacks.js'; 
+import {Playbacks}from './Pages/Playbacks.js'; 
+import {Exercicios }from './Pages/Exercicios.js'; 
 
 import {M1A1, M1A2, M1A3, M1A4, M1A5, M1A6, M1A7} from './Pages/Modulo1.js'; 
 
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/playbacks" element={<Playbacks />} />
+          <Route path="/exercicios" element={<Exercicios/>} />
           <Route path="/modulos" element={<Modulos />} />
 
           <Route path="/modulo-1/aula-1" element={<M1A1/>} />
