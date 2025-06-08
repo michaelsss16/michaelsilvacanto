@@ -11,6 +11,12 @@ export const Playbacks = () =>
 <source src="/michaelsilvacanto/Playbacks/ACasaESua.mp3" type="audio/wav" />
 Seu navegador não suporta o elemento de áudio.
 </audio>
+
+<h3> Deus me ama - Thales Roberto</h3>
+<audio controls>
+<source src="/michaelsilvacanto/Playbacks/DeusMeAma.mp3" type="audio/wav" />
+Seu navegador não suporta o elemento de áudio.
+</audio>
 </div>
     );
 }
