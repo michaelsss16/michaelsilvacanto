@@ -9,6 +9,7 @@ import Header from "./Components/Header.js";
 import Modulos from './Pages/Modulos.js';
 import { Playbacks } from './Pages/Playbacks.js';
 import { Exercicios } from './Pages/Exercicios.js';
+import { Teclado} from './Components/Teclado.js';
 import { M1A1, M1A2, M1A3, M1A4, M1A5, M1A6, M1A7 } from './Pages/Modulo1.js';
 import Login from './Pages/Login.js';
 
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/modulos" element={<RotaProtegida><Modulos /></RotaProtegida>} />
           <Route path="/playbacks" element={<RotaProtegida><Playbacks /></RotaProtegida>} />
           <Route path="/exercicios" element={<RotaProtegida><Exercicios /></RotaProtegida>} />
+          <Route path="/teclado" element={<RotaProtegida><Teclado /></RotaProtegida>} />
 
           <Route path="/modulo-1/aula-1" element={<RotaProtegida><M1A1 /></RotaProtegida>} />
           <Route path="/modulo-1/aula-2" element={<RotaProtegida><M1A2 /></RotaProtegida>} />

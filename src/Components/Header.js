@@ -10,6 +10,7 @@ const Header = ({ autenticado, onLogout }) => {
           <Link to="/modulos">Aulas</Link><br />
           <Link to="/exercicios">Exercícios</Link><br />
           <Link to="/playbacks">Playbacks</Link><br />
+          <Link to="/teclado">Teclado</Link><br />
           <Link to="/contato">Contato</Link><br />
           <Link to="/sobre">Sobre</Link><br />
           {!autenticado && <Link to="/login">Login</Link>}<br />
