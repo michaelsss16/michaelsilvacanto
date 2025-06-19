@@ -46,27 +46,27 @@ export default function Modulos () {
     {
       titulo: "Módulo 2: Teoria musical",
       aulas: [
-        "Características do som",
-        "Melodia",
-        "Ritmo",
-        "Harmonia",
-        "Tonalidade"
+        "Propriedades do som: Altura, intensidade e timbre",
+        "Tessitura vocal X Extensão vocal",
+        "Pilares musicais: Melodia, harmonia e ritmo",
+        "Afinação",
+        "Dicção e Articulação "
       ],
       basePath: "/modulo-2"
     },
     {
-      titulo: "Módulo 3: Registros vocais",
+      titulo: "Módulo 3: Registros vocais [em construção]",
       aulas: [
-        "Registro de peito",
-        "Registro de cabeça",
-        "Registro de falsete",
-        "Fry e registro de apito",
-        "Ajustes vocais: voz de sussurro, cor da voz e nazalidade"
+        "Registro de peito[em construção]",
+        "Registro de cabeça[em construção]",
+        "Registro de falsete[em construção]",
+        "Fry e registro de apito[em construção]",
+        "Ajustes vocais: voz de sussurro, cor da voz e nazalidade[em construção]"
       ],
       basePath: "/modulo-3"
     },
     {
-      titulo: "Módulo 4: Ornamentos vocais",
+      titulo: "Módulo 4: Ornamentos vocais[em construção]",
       aulas: [
         "Vibrato",
         "Fry e wisper voice",
@@ -78,7 +78,7 @@ export default function Modulos () {
       basePath: "/modulo-4"
     },
     {
-      titulo: "Módulo 5: Canto coral",
+      titulo: "Módulo 5: Canto coral[em construção]",
       aulas: [
         "Timbragem e canto uníssono",
         "Backing vocal",

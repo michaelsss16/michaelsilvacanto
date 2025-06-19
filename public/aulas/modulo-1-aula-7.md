@@ -1,6 +1,6 @@
 # 1.7 Conclusão módulo 1
 
-Este primeiro módulo do curso "Acordes da Missão - Canto" teve como objetivo lançar as bases para uma jornada vocal consciente e saudável. Exploramos desde a definição da música e do canto, até a fisiologia do aparelho fonador, passando por práticas essenciais como alongamento, aquecimento e desaquecimento vocal, e a importância da respiração correta. Desmistificamos crenças comuns sobre o canto, fornecendo informações valiosas para um início de jornada musical sólido.
+Este primeiro módulo do curso teve como objetivo lançar as bases para uma jornada vocal consciente e saudável. Exploramos desde a definição da música e do canto, até a fisiologia do aparelho fonador, passando por práticas essenciais como alongamento, aquecimento e desaquecimento vocal, e a importância da respiração correta. Desmistificamos crenças comuns sobre o canto, fornecendo informações valiosas para um início de jornada musical sólido.
 
 No capítulo 1.1, "Introdução ao Canto", mergulhamos no universo da música, compreendendo sua essência como forma de arte e expressão humana. Definimos o canto como a arte de usar a voz para transformar palavras e melodias em emoção, destacando a importância da técnica vocal, musicalidade, interpretação e repertório na jornada do cantor.
 
