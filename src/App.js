@@ -14,6 +14,7 @@ import Login from './Pages/Login.js';
 
 import { M1A1, M1A2, M1A3, M1A4, M1A5, M1A6, M1A7 } from './Pages/Modulo1.js';
 import { M2A1, M2A2, M2A3, M2A4, M2A5} from './Pages/Modulo2.js';
+import { M3A1, M3A2, M3A3} from './Pages/Modulo3.js';
 
 export default function App() {
   const [autenticado, setAutenticado] = useState(() => {
@@ -63,6 +64,10 @@ export default function App() {
           <Route path="/modulo-2/aula-3" element={<RotaProtegida><M2A3 /></RotaProtegida>} />
           <Route path="/modulo-2/aula-4" element={<RotaProtegida><M2A4 /></RotaProtegida>} />
           <Route path="/modulo-2/aula-5" element={<RotaProtegida><M2A5 /></RotaProtegida>} />
+
+          <Route path="/modulo-3/aula-1" element={<RotaProtegida><M3A1 /></RotaProtegida>} />
+          <Route path="/modulo-3/aula-2" element={<RotaProtegida><M3A2 /></RotaProtegida>} />
+          <Route path="/modulo-3/aula-3" element={<RotaProtegida><M3A3 /></RotaProtegida>} />
 
           {/* Qualquer rota inválida leva para NotFound, mas protegida também */}
           <Route path="*" element={

@@ -55,13 +55,11 @@ export default function Modulos () {
       basePath: "/modulo-2"
     },
     {
-      titulo: "Módulo 3: Registros vocais [em construção]",
+      titulo: "Módulo 3: Registros vocais, modos fonatórios e coloratura vocal",
       aulas: [
-        "Registro de peito[em construção]",
-        "Registro de cabeça[em construção]",
-        "Registro de falsete[em construção]",
-        "Fry e registro de apito[em construção]",
-        "Ajustes vocais: voz de sussurro, cor da voz e nazalidade[em construção]"
+        "Registros vocais",
+        "Modos fonatórios",
+        "Coloridade vocal"
       ],
       basePath: "/modulo-3"
     },
