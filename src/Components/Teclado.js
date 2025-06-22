@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import * as Tone from "tone";
 
 const armazenamento = {
@@ -55,6 +55,7 @@ export const Teclado = () => {
   const [escalaPersonalizada, setEscalaPersonalizada] = useState(() =>
     armazenamento.get("escalaPersonalizada", "0 2 4 5 7 9 11 12")
   );
+  const sequenciaIdRef = useRef(0);
 
   // Monta synth conforme tipo
   useEffect(() => {
@@ -120,7 +121,13 @@ export const Teclado = () => {
   // Função que toca a sequência da escala, repetições e BPM
   const tocarSequencia = async (notaInicial = "C4") => {
     if (!synth || !notaInicial) return;
+
+    // Gera um ID único para esta execução.
+    sequenciaIdRef.current += 1;
+    const idAtual = sequenciaIdRef.current;
+
     await Tone.start();
+    synth.releaseAll(); // Interrompe qualquer nota que esteja soando da sequência anterior
     const delayMs = (60 / bpm) * 1000;
   
     const [letra, ...resto] = notaInicial;
@@ -152,6 +159,10 @@ export const Teclado = () => {
   
     for (let r = 0; r < rep; r++) {
       for (let nota of notasEscala) {
+        // Verifica se outra sequência foi iniciada. Se sim, interrompe a atual.
+        if (idAtual !== sequenciaIdRef.current) {
+          return;
+        }
         synth.triggerAttackRelease(nota, "8n");
         await new Promise((res) => setTimeout(res, delayMs));
       }
