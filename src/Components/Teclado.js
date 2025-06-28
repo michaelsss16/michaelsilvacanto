@@ -230,7 +230,7 @@ export const Teclado = () => {
 
   return (
     <div style={{ maxWidth: 400, margin: "auto", fontFamily: "Arial, sans-serif" }}>
-      <h1>Teclado Virtual</h1>
+      <h1>Teclado Virtual - treinamento de escalas</h1>
 
       <div style={{ marginBottom: 12 }}>
         <label htmlFor="sintetizador" style={{ fontWeight: "bold" }}>
