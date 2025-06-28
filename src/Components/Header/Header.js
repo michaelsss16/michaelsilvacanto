@@ -14,17 +14,25 @@ const Header = ({ autenticado, onLogout }) => {
       <div className="header-container">
         {/* Logotipo ou Título do Site */}
         <Link to="/" className="header-logo">
-          {/* Se você tiver um logo, coloque aqui */}
+
           <h1>MS - Music Space</h1>
         </Link>
 
-        {/* Botão para o menu hambúrguer (visível apenas em telas menores) */}
-        <button className="menu-toggle" onClick={toggleMenu} aria-expanded={menuAberto} aria-controls="main-navigation">
-          ☰ {/* Ícone de hambúrguer, você pode usar um SVG ou ícone de fonte */}
+        <button
+          className="menu-toggle"
+          onClick={toggleMenu}
+          aria-expanded={menuAberto}
+          aria-controls="main-navigation"
+          aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
+        >
+          ☰ <span className="sr-only">{menuAberto ? "Fechar menu" : "Abrir menu"}</span>
         </button>
 
-        {/* Navegação Principal */}
-        <nav aria-label="Menu principal" className={`nav-menu ${menuAberto ? 'aberto' : ''}`} id="main-navigation">
+        <nav
+          aria-label="Menu"
+          className={`nav-menu ${menuAberto ? 'aberto' : ''}`}
+          id="main-navigation"
+        >
           <ul className="nav-list">
             <li><NavLink to="/" end className={({ isActive }) => isActive ? "active-link" : ""}>Início</NavLink></li>
             <li><NavLink to="/modulos" className={({ isActive }) => isActive ? "active-link" : ""}>Aulas</NavLink></li>
@@ -35,7 +43,6 @@ const Header = ({ autenticado, onLogout }) => {
             <li><NavLink to="/sobre" className={({ isActive }) => isActive ? "active-link" : ""}>Sobre</NavLink></li>
           </ul>
         </nav>
-
         {/* Links de Autenticação (Login/Sair) */}
         <div className="auth-links">
           {!autenticado && <Link to="/login" className="login-link">Login</Link>}
@@ -46,4 +53,4 @@ const Header = ({ autenticado, onLogout }) => {
   );
 };
 
-export default Header;
+export default Header;	
