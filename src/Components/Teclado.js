@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import * as Tone from "tone";
 
 const armazenamento = {
@@ -55,6 +55,7 @@ export const Teclado = () => {
   const [escalaPersonalizada, setEscalaPersonalizada] = useState(() =>
     armazenamento.get("escalaPersonalizada", "0 2 4 5 7 9 11 12")
   );
+  const sequenciaIdRef = useRef(0);
 
   // Monta synth conforme tipo
   useEffect(() => {
@@ -119,18 +120,55 @@ export const Teclado = () => {
 
   // Função que toca a sequência da escala, repetições e BPM
   const tocarSequencia = async (notaInicial = "C4") => {
-    if (!synth) return;
-    await Tone.start();
-    const delayMs = (60 / bpm) * 1000;
+    if (!synth || !notaInicial) return;
 
+    // Gera um ID único para esta execução.
+    sequenciaIdRef.current += 1;
+    const idAtual = sequenciaIdRef.current;
+
+    await Tone.start();
+    synth.releaseAll(); // Interrompe qualquer nota que esteja soando da sequência anterior
+    const delayMs = (60 / bpm) * 1000;
+  
+    const [letra, ...resto] = notaInicial;
+    const baseNota = notaInicial.slice(0, -1); // Ex: "C#" de "C#4"
+    const baseOitava = parseInt(notaInicial.slice(-1)); // Oitava da nota clicada
+  
+    // Encontra índice da nota inicial na lista
+    const indexNotaInicial = notasBase.indexOf(baseNota);
+    if (indexNotaInicial === -1) return;
+  
+    // Pega fórmula da escala
+    let formula = todasEscalas[escalaTipo];
+    if (escalaTipo === "personalizada") {
+      const nums = escalaPersonalizada
+        .split(" ")
+        .map((n) => parseInt(n))
+        .filter((n) => !isNaN(n));
+      formula = nums.length ? nums : [0];
+    }
+    if (!formula) return;
+  
+    // Calcula escala a partir da nota base
+    const notasEscala = formula.map((semi) => {
+      const totalSemitons = indexNotaInicial + semi;
+      const notaIdx = totalSemitons % 12;
+      const oitavaExtra = Math.floor((indexNotaInicial + semi) / 12);
+      return notasBase[notaIdx] + (baseOitava + oitavaExtra);
+    });
+  
     for (let r = 0; r < rep; r++) {
-      for (let nota of escalaAtual) {
+      for (let nota of notasEscala) {
+        // Verifica se outra sequência foi iniciada. Se sim, interrompe a atual.
+        if (idAtual !== sequenciaIdRef.current) {
+          return;
+        }
         synth.triggerAttackRelease(nota, "8n");
         await new Promise((res) => setTimeout(res, delayMs));
       }
     }
   };
-
+  
   // Mapear teclas para notas começando em C
   const tecladoNotas = [
     "C",
@@ -192,7 +230,7 @@ export const Teclado = () => {
 
   return (
     <div style={{ maxWidth: 400, margin: "auto", fontFamily: "Arial, sans-serif" }}>
-      <h2>Teclado Virtual</h2>
+      <h1>Teclado Virtual</h1>
 
       <div style={{ marginBottom: 12 }}>
         <label htmlFor="sintetizador" style={{ fontWeight: "bold" }}>
