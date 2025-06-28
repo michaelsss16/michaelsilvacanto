@@ -22,7 +22,7 @@ export function WhatsappButton() {
 }
 
 export function YoutubeButton() {
-  const link = 'https://www.youtube.com/@michaelsilvaoficial8208';
+  const link = 'https://www.youtube.com/@michaelsilvaoficial8208?sub_confirmation=1';
 
   const abrirYoutube = () => {
     window.open(link, '_blank');
