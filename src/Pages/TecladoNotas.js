@@ -229,7 +229,7 @@ export const TecladoNotas = () => {
       `}</style>
 
       <div className="main-container">
-        <h1>Teclado virtual - treinamento de escalas</h2>
+        <h1>Teclado virtual - treinamento de notas</h1>
         
         <fieldset className="controls-fieldset">
           <legend>Controles do Exercício</legend>

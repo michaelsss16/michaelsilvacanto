@@ -75,6 +75,7 @@ const Header = ({ autenticado, onLogout }) => {
                   aria-label="Submenu Teclado"
                 >
                   <li><NavLink to="/teclado/notas">Notas</NavLink></li>
+                  <li><NavLink to="/teclado/acordes">Acordes</NavLink></li>
                   <li><NavLink to="/teclado/escalas">Escalas</NavLink></li>
                 </ul>
               )}
