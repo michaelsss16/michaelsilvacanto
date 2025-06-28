@@ -5,14 +5,11 @@ import {WhatsappButton }from "../Components/Contatos.js"
 const Home = () => {
   return (
     <div>
-      <div>
-        <h1>Michael Silva Canto</h1>
-      </div>
+        <h1>Michael Silva - Music Space</h1>
 
       <div>
         <h2>Curso Completo de Canto Online</h2>
         <p>Aprenda a dominar sua voz com técnica, confiança e emoção.</p>
-        <a href="#">Ver Módulos</a>
       </div>
 
       <div>

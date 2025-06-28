@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Routes, Route, HashRouter, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, HashRouter, Navigate } from "react-router-dom";
 
 import Footer from "./Components/Footer.js";
 import Home from './Pages/Home.js';
 import NotFound from './Pages/NotFound.js';
 import Sobre from './Pages/Sobre.js';
-import Header from "./Components/Header.js";
+import Header from "./Components/Header/Header.js";
 import Modulos from './Pages/Modulos.js';
 import { Playbacks } from './Pages/Playbacks.js';
 import { Exercicios } from './Pages/Exercicios.js';
