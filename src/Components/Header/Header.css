@@ -1,0 +1,183 @@
+/* Estilos gerais para o header */
+.header {
+    background-color: #adadad; /* Cor de fundo do header vinda do seu index.css */
+    color: var(--black); /* Cor do texto do header */
+    padding: 1rem 2rem; /* Padding definido no seu index.css */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o header */
+    font-family: 'Roboto', 'Arial', sans-serif; /* Consistência com o body */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Espaça logo/título, menu e botões de auth */
+    align-items: center; /* Alinha itens verticalmente */
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+/* Estilo do Logotipo/Título */
+.header-logo h1 {
+    margin: 0;
+    font-size: 1.8rem; /* Tamanho ajustado para o logo, menor que h1 global */
+    font-weight: bold;
+    color: var(--black); /* Usa a cor de texto global */
+}
+
+.header-logo a {
+    color: var(--black); /* Cor do link do logo */
+    text-decoration: none; /* Sem sublinhado no logo */
+    transition: all 0.3s ease;
+}
+
+.header-logo a:hover {
+    color: var(--primary-blue); /* Cor de hover para o logo */
+}
+
+/* Navegação */
+.nav-menu ul {
+    list-style: none; /* Remove bolinhas da lista */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Alinha os itens do menu horizontalmente */
+}
+
+.nav-menu li {
+    margin: 0 15px; /* Espaçamento entre os itens do menu */
+}
+
+.nav-menu a {
+    color: var(--dark-blue); /* Cor dos links do menu, vindo do seu a global */
+    font-style: italic; /* Consistente com seu a global */
+    text-decoration: none;
+    padding: 5px 0;
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus {
+    text-decoration: underline; /* Sublinhado no hover/focus, consistente com seu a global */
+    color: var(--primary-blue); /* Ajuste a cor de hover se quiser diferente do a global */
+}
+
+/* Link ativo (usando NavLink do React Router Dom) */
+.active-link {
+    font-weight: bold; /* Deixa o link ativo em negrito */
+    color: var(--primary-blue); /* Cor primária para o link ativo */
+    border-bottom: 2px solid var(--primary-blue); /* Linha na parte de baixo para destacar */
+}
+
+/* Links de autenticação */
+.auth-links .login-link {
+    /* Estilo para link Login - herda de a global e adiciona botão */
+    background-color: var(--primary-blue); /* Cor de botão do seu index.css */
+    color: white; /* Texto branco */
+    border: none;
+    padding: 0.75rem 1.5rem; /* Padding do seu botão global */
+    border-radius: 4px; /* Raio da borda do seu botão global */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra do seu botão global */
+    text-decoration: none; /* Remove sublinhado */
+    font-style: normal; /* Sobrescreve italic do 'a' global para botões */
+    display: inline-block; /* Para que o padding funcione */
+}
+
+.auth-links .login-link:hover,
+.auth-links .login-link:focus {
+    background-color: var(--dark-blue); /* Hover do seu botão global */
+    outline: 3px solid var(--primary-blue); /* Outline do seu botão global */
+    outline-offset: 3px;
+    text-decoration: none; /* Garante que não sublinhe no hover */
+}
+
+.auth-links .logout-button {
+    /* Estilo para botão Sair - usa o estilo do botão global */
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-links .logout-button:hover,
+.auth-links .logout-button:focus {
+    background-color: var(--dark-blue);
+    outline: 3px solid var(--primary-blue);
+    outline-offset: 3px;
+}
+
+/* Menu Hambúrguer - Oculto por padrão em telas maiores */
+.menu-toggle {
+    display: none; /* Oculta o botão hambúrguer em desktops */
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--black); /* Cor do ícone do hambúrguer */
+    cursor: pointer;
+    padding: 0.5rem; /* Adiciona um pouco de padding para facilitar o clique */
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+        justify-content: space-between;
+        /* Seu index.css já tem text-align: center para header em 768px,
+           mas para o flexbox funcionar bem, vamos manter justify-content */
+    }
+
+    .header-logo {
+        flex-grow: 1; /* Faz o logo ocupar o espaço restante */
+        text-align: left; /* Garante que o logo fique alinhado à esquerda no mobile */
+    }
+
+    .header-logo h1 {
+        font-size: 1.5rem; /* Ajusta o tamanho do título em telas menores */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão hambúrguer */
+        order: 2; /* Posiciona o botão após o logo */
+    }
+
+    .nav-menu {
+        width: 100%; /* Ocupa a largura total */
+        order: 3; /* Posiciona o menu abaixo do logo e hambúrguer */
+        display: none; /* Oculta o menu por padrão */
+        flex-direction: column; /* Itens do menu empilhados verticalmente */
+        background-color: #f8f8f8; /* Fundo mais claro para o menu quando aberto, para contraste */
+        padding: 10px 0;
+        text-align: center;
+        border-top: 1px solid var(--light-gray); /* Separador visual */
+    }
+
+    .nav-menu.aberto {
+        display: flex; /* Mostra o menu quando "aberto" */
+    }
+
+    .nav-menu ul {
+        flex-direction: column; /* Empilha os links verticalmente */
+    }
+
+    .nav-menu li {
+        margin: 10px 0; /* Espaçamento vertical entre os links */
+    }
+
+    .auth-links {
+        width: 100%; /* Ocupa a largura total */
+        order: 4; /* Posiciona abaixo do menu */
+        text-align: center;
+        margin-top: 15px; /* Espaço acima do botão de login/sair */
+    }
+
+    .auth-links .login-link,
+    .auth-links .logout-button {
+        width: calc(100% - 40px); /* Ocupa quase a largura total, com padding lateral */
+        max-width: 300px; /* Limita a largura em telas muito largas */
+    }
+}
