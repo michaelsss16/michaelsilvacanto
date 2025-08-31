@@ -5,21 +5,20 @@ import {WhatsappButton }from "../Components/Contatos.js"
 const Home = () => {
   return (
     <div>
-        <h1>Michael Silva - Music Space</h1>
+        <h1>Bem-vindo ao seu espaço de desenvolvimento vocal!</h1>
 
       <div>
-        <h2>Curso Completo de Canto Online</h2>
-        <p>Aprenda a dominar sua voz com técnica, confiança e emoção.</p>
+        <h2>Aprenda a cantar com um método completo e prático</h2>
+        <p>Olá! Sou Michael Silva, e criei este espaço para te guiar em sua jornada no canto. Aqui você encontrará um curso de canto completo, dividido em módulos que te levarão do básico ao avançado, além de exercícios práticos e playbacks para você treinar e aprimorar sua voz.</p>
       </div>
 
       <div>
-        <h3>Sobre o Curso</h3>
-        <p>Este curso foi desenvolvido para cantores iniciantes e intermediários que desejam melhorar sua técnica vocal e compreensão musical. Utilizamos uma abordagem prática e progressiva para garantir seu crescimento vocal em cada etapa.</p>
-        <p>Deve ser utilizado como apoio para as aulas com o professor.</p>
+        <h3>Uma jornada de aprendizado para sua voz</h3>
+        <p>O curso é projetado para ser um complemento às nossas aulas, oferecendo um caminho claro e progressivo. Cada módulo aborda aspectos essenciais da técnica vocal, desde a respiração e afinação até a interpretação e saúde da voz. O objetivo é que você desenvolva sua musicalidade e ganhe confiança para se expressar através do canto.</p>
       </div>
 
       <div>
-        <h3>Módulos do Curso</h3>
+        <h3>Explore os Módulos</h3>
         <div>
 <Modulos />
         </div>
@@ -34,8 +33,8 @@ const Home = () => {
       </div>
 
       <div>
-        <h3>Pronto para começar?</h3>
-        <p>Me chama no whatsapp!</p>
+        <h3>Vamos começar a sua jornada vocal?</h3>
+        <p>Entre em contato para agendarmos sua primeira aula e dar o próximo passo na realização do seu sonho de cantar.</p>
         <WhatsappButton />
       </div>
     </div>
