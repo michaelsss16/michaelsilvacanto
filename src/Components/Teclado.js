@@ -326,7 +326,7 @@ export const Teclado = () => {
           <option value="menor">Menor</option>
           <option value="maior5">Maior (5 notas)</option>
           <option value="pentatonica">Pentatônica</option>
-          <' + 'option value="harmonicaMenor">Harmônica Menor</option>
+          <option value="harmonicaMenor">Harmônica Menor</option>
           <option value="dorica">Dórica</option>
           <option value="cromatica">Cromática</option>
           <option value="personalizada">Personalizada</option>
