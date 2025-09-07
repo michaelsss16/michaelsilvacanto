@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import * as Tone from "tone";
+import { Piano } from "./Piano";
 
 const armazenamento = {
   get: (chave, def) => {
@@ -44,7 +45,7 @@ export const Teclado = () => {
   // Estados
   const [synth, setSynth] = useState(null);
   const [bpm, setBpm] = useState(() => armazenamento.get("bpm", 90));
-  const [oitava, setOitava] = useState(() => armazenamento.get("oitava", 4));
+  const [oitava, setOitava] = useState(() => armazenamento.get("oitava", 3));
   const [rep, setRep] = useState(() => armazenamento.get("rep", 1));
   const [sintetizadorTipo, setSintetizadorTipo] = useState(() =>
     armazenamento.get("sintetizadorTipo", "FMSynth")
@@ -229,7 +230,7 @@ export const Teclado = () => {
   }, [oitava, bpm, rep, escalaAtual]);
 
   return (
-    <div style={{ maxWidth: 400, margin: "auto", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ maxWidth: 900, margin: "auto", fontFamily: "Arial, sans-serif" }}>
       <h1>Teclado Virtual - treinamento de escalas</h1>
 
       <div style={{ marginBottom: 12 }}>
@@ -253,7 +254,7 @@ export const Teclado = () => {
 
       <div style={{ marginBottom: 12 }}>
         <label htmlFor="oitava" style={{ fontWeight: "bold" }}>
-          Oitava:
+          Oitava Inicial:
         </label>
         <select
           id="oitava"
@@ -262,7 +263,7 @@ export const Teclado = () => {
           aria-label="Selecionar oitava"
           style={{ width: "100%", marginTop: 4 }}
         >
-          {[1, 2, 3, 4, 5, 6, 7].map((o) => (
+          {[1, 2, 3, 4, 5, 6].map((o) => (
             <option key={o} value={o}>
               {o}
             </option>
@@ -325,7 +326,7 @@ export const Teclado = () => {
           <option value="menor">Menor</option>
           <option value="maior5">Maior (5 notas)</option>
           <option value="pentatonica">Pentatônica</option>
-          <option value="harmonicaMenor">Harmônica Menor</option>
+          <' + 'option value="harmonicaMenor">Harmônica Menor</option>
           <option value="dorica">Dórica</option>
           <option value="cromatica">Cromática</option>
           <option value="personalizada">Personalizada</option>
@@ -358,29 +359,11 @@ export const Teclado = () => {
         )}
       </div>
 
-      <div style={{ marginBottom: 12 }}>
-        <label style={{ fontWeight: "bold", display: "block", marginBottom: 4 }}>
-          Notas:
-        </label>
-        {tecladoNotas.map((nota, i) => (
-          <button
-            key={nota}
-            onClick={() => tocarSequencia(nota + oitava)}
-            aria-label={`Tocar escala iniciando pela nota ${nota}${oitava}`}
-            style={{
-              margin: 2,
-              padding: "6px 10px",
-              fontSize: 16,
-              cursor: "pointer",
-              borderRadius: 4,
-              border: "1px solid #ccc",
-              userSelect: "none",
-            }}
-          >
-            {nota}
-          </button>
-        ))}
-      </div>
+      <Piano
+        oitavaInicial={oitava}
+        oitavaFinal={oitava + 1}
+        tocarNota={tocarSequencia}
+      />
 
       <details style={{ marginTop: 20, fontSize: 14 }}>
         <summary style={{ cursor: "pointer", fontWeight: "bold" }}>

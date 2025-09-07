@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import * as Tone from 'tone';
+import { Piano } from '../Components/Piano';
 
 // --- DEFINIÇÕES E HOOKS REUTILIZADOS ---
 const notasBase = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -21,43 +22,6 @@ const useToneSynth = (synthType = 'FMSynth') => {
   }, [synth]);
   return { tocarAcorde };
 };
-
-// --- COMPONENTES DE UI DO PIANO (REUTILIZADOS) ---
-// ... (O código dos componentes Piano e PianoKey permanece o mesmo e não precisa ser colado novamente se já estiver no seu projeto)
-const PianoKey = React.memo(({ nota, type, style, onKeyClick }) => (
-    <button className={`piano-key ${type}`} style={style} onClick={() => onKeyClick(nota)} aria-label={`Tocar acorde a partir de ${nota}`}>
-      <span className="note-name">{nota}</span>
-    </button>
-));
-const Piano = ({ oitavaInicial, oitavaFinal, onKeyClick }) => {
-    const WHITE_KEY_WIDTH = 50, BLACK_KEY_WIDTH = 30;
-    const { whiteKeys, blackKeys } = useMemo(() => {
-        const keys = { whiteKeys: [], blackKeys: [] };
-        for (let oitava = oitavaInicial; oitava <= oitavaFinal; oitava++) {
-            notasBase.forEach(n => {
-                const notaCompleta = `${n}${oitava}`;
-                if (n.includes('#')) keys.blackKeys.push(notaCompleta);
-                else keys.whiteKeys.push(notaCompleta);
-            });
-        }
-        return keys;
-    }, [oitavaInicial, oitavaFinal]);
-    const whiteKeyIndexMap = { 'C': 0, 'D': 1, 'E': 2, 'F': 3, 'G': 4, 'A': 5, 'B': 6 };
-    return (
-        <div className="piano-container" role="group" aria-label="Teclado de piano interativo">
-            {whiteKeys.map(nota => <PianoKey key={nota} nota={nota} type="white" onKeyClick={onKeyClick} />)}
-            {blackKeys.map(nota => {
-                const oitava = parseInt(nota.slice(-1));
-                const notaBase = nota.slice(0, 1);
-                const oitavasAnteriores = oitava - oitavaInicial;
-                const indexNaOitava = whiteKeyIndexMap[notaBase];
-                const leftPosition = (oitavasAnteriores * 7 * WHITE_KEY_WIDTH) + ((indexNaOitava + 1) * WHITE_KEY_WIDTH) - (BLACK_KEY_WIDTH / 2);
-                return <PianoKey key={nota} nota={nota} type="black" style={{ left: `${leftPosition}px` }} onKeyClick={onKeyClick} />;
-            })}
-        </div>
-    );
-};
-
 
 // --- LÓGICA DE ACORDES ---
 const definicoesAcordes = {
@@ -96,12 +60,12 @@ export const TecladoAcordes = () => {
     const [repeticoes, setRepeticoes] = useState(1);
     const [oitavaBase, setOitavaBase] = useState(3);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [notasPressionadas, setNotasPressionadas] = useState([]);
 
     const handleTipoAcordeChange = (tipo) => {
         setTiposDeAcordesSelecionados(prev => {
             const jaSelecionado = prev.includes(tipo);
             if (jaSelecionado) {
-                // Impede de desmarcar o último item
                 if (prev.length === 1) return prev;
                 return prev.filter(t => t !== tipo);
             } else {
@@ -115,20 +79,21 @@ export const TecladoAcordes = () => {
         setIsPlaying(true);
         setProgressaoRevelada(false);
 
-        const duracaoCompassoMs = (60 / bpm) * 4 * 1000; // Tempo de um compasso 4/4
+        const duracaoCompassoMs = (60 / bpm) * 4 * 1000;
         
         for (let r = 0; r < repeticoes; r++) {
             for (const acordeInfo of progressao) {
                 const notas = gerarNotasDoAcorde(acordeInfo.fundamental, acordeInfo.oitava, acordeInfo.tipo);
-                tocarAcorde(notas, '1n'); // Toca como uma semibreve
-                await new Promise(res => setTimeout(res, duracaoCompassoMs)); // Espera um compasso
+                setNotasPressionadas(notas);
+                tocarAcorde(notas, '1n');
+                await new Promise(res => setTimeout(res, duracaoCompassoMs));
             }
-            // Pausa entre as repetições
             if (r < repeticoes - 1) {
                 await new Promise(res => setTimeout(res, duracaoCompassoMs));
             }
         }
         setIsPlaying(false);
+        setNotasPressionadas([]);
     }, [bpm, repeticoes, tocarAcorde, isPlaying]);
     
     const handleTocarProgressao = () => {
@@ -151,16 +116,17 @@ export const TecladoAcordes = () => {
     const handlePianoKeyClick = (nota) => {
         const notaFundamental = nota.slice(0, -1);
         const oitava = parseInt(nota.slice(-1));
-        // Toca o primeiro tipo de acorde selecionado ou maior como padrão
         const tipoParaTocar = tiposDeAcordesSelecionados[0] || 'maior';
         const notasDoAcorde = gerarNotasDoAcorde(notaFundamental, oitava, tipoParaTocar);
-        tocarAcorde(notasDoAcorde, '1n');
+        setNotasPressionadas(notasDoAcorde);
+        tocarAcorde(notasDoAcorde, '1n').then(() => {
+            setTimeout(() => setNotasPressionadas([]), 1000);
+        });
     };
 
     return (
         <>
             <style>{`
-                /* ... Estilos gerais ... */
                 .main-container { max-width: 900px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
                 h2, h3 { color: #1a237e; border-bottom: 2px solid #3f51b5; padding-bottom: 8px; }
                 .controls-fieldset { border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin-bottom: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem 2rem; }
@@ -175,7 +141,6 @@ export const TecladoAcordes = () => {
                 .revelacao-progressao { grid-column: 1 / -1; margin-top: 10px; padding: 12px; background-color: #e8eaf6; border-left: 4px solid #3f51b5; font-size: 1.2rem; text-align: center; }
                 .revelacao-progressao strong { margin: 0 8px; }
 
-                /* Estilos do Menu de Seleção Múltipla */
                 .acorde-selector summary { cursor: pointer; font-weight: 500; padding: 8px; border: 1px solid #ccc; border-radius: 4px; list-style: none; }
                 .acorde-selector summary::-webkit-details-marker { display: none; }
                 .acorde-selector summary::after { content: ' ▼'; }
@@ -183,12 +148,6 @@ export const TecladoAcordes = () => {
                 .acorde-options { margin-top: 5px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; max-height: 150px; overflow-y: auto; }
                 .acorde-option { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
                 .acorde-option label { font-weight: normal; }
-
-                /* Estilos do Piano (sem alterações) */
-                .piano-container { position: relative; display: flex; margin-top: 16px; width: 100%; padding: 10px 0; background-color: #2c2c2c; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); overflow-x: auto; }
-                .piano-key { border-style: solid; border-color: #666; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 10px; user-select: none; transition: background-color 0.1s ease; }
-                .piano-key.white { width: 50px; height: 200px; flex-shrink: 0; background: linear-gradient(to bottom, #fff 96%, #e0e0e0 100%); border-width: 1px 1px 2px 1px; border-radius: 0 0 5px 5px; }
-                .piano-key.black { position: absolute; top: 10px; width: 30px; height: 120px; background: linear-gradient(to bottom, #333 95%, #000 100%); z-index: 2; border-width: 1px 2px 4px 2px; border-radius: 0 0 4px 4px; }
             `}</style>
             <div className="main-container">
                 <h2>Teclado virtual - treinamento de acordes</h2>
@@ -247,7 +206,12 @@ export const TecladoAcordes = () => {
                 </fieldset>
 
                 <h3 style={{ marginTop: '2rem' }}>Teclado Interativo</h3>
-                <Piano oitavaInicial={3} oitavaFinal={4} onKeyClick={handlePianoKeyClick} />
+                <Piano 
+                    oitavaInicial={3} 
+                    oitavaFinal={4} 
+                    tocarNota={handlePianoKeyClick} 
+                    notasPressionadas={notasPressionadas} 
+                />
             </div>
         </>
     );
