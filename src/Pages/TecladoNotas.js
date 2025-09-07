@@ -118,7 +118,12 @@ export const TecladoNotas = () => {
   const [oitavaFinal, setOitavaFinal] = useState(4);
   const [ultimaNotaTocada, setUltimaNotaTocada] = useState(null);
   const [notaRevelada, setNotaRevelada] = useState(false);
-  const { tocarNota } = useToneSynth('FMSynth');
+  const [duracaoNota, setDuracaoNota] = useState(0.5); // Duração em segundos
+  const synth = useToneSynth('FMSynth');
+
+  const tocarNota = useCallback((nota) => {
+    synth.tocarNota(nota, duracaoNota);
+  }, [synth, duracaoNota]);
 
   useEffect(() => {
     if (oitavaFinal < oitavaInicial) {
@@ -246,6 +251,20 @@ export const TecladoNotas = () => {
             <select id="oitava-final" value={oitavaFinal} onChange={(e) => setOitavaFinal(Number(e.target.value))}>
               {oitavasDisponiveis.filter(o => o >= oitavaInicial).map(o => <option key={o} value={o}>{o}</option>)}
             </select>
+          </div>
+
+          <div className="control-group">
+            <label htmlFor="duracao-nota">Duração ({duracaoNota.toFixed(1)}s):</label>
+            <input
+              type="range"
+              id="duracao-nota"
+              min="0.1"
+              max="2"
+              step="0.1"
+              value={duracaoNota}
+              onChange={(e) => setDuracaoNota(Number(e.target.value))}
+              style={{ flex: 1 }}
+            />
           </div>
 
           <div className="button-group">
