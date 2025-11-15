@@ -1,4 +1,4 @@
-# 1.5 Respiração
+# Respiração
 
 A respiração é a base da produção vocal e um dos aspectos mais importantes para o cantor. Diferente da respiração comum usada na fala, a respiração no canto exige maior controle, eficiência e capacidade de sustentação. Para isso, utiliza-se a respiração costo-diafragmática-abdominal, que permite um fluxo de ar estável e uma emissão vocal mais potente e saudável.
 

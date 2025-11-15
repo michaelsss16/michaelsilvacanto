@@ -1,4 +1,4 @@
-# 1.6 Mitos e verdades sobre o canto
+# Mitos e verdades sobre o canto
 
  O canto e o uso/estudo da voz é rodeado por mitos sobre o que devemos ou não fazer, quais cuidados devemos ter e ações que devemos evitar em nosso dia a dia. Por isso, nada mais importante que conhecer um pouco mais sobre os mitos e verdades do canto, enquanto estudantes dessa arte.
 

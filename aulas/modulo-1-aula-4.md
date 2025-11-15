@@ -1,4 +1,4 @@
-# 1.4Aquecimento e desaquecimento vocal
+# Aquecimento e desaquecimento vocal
 
 ## Aquecimento vocal
 
