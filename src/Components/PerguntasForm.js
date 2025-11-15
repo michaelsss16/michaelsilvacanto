@@ -50,7 +50,7 @@ const PerguntasForm = ({ perguntas }) => {
     const texto = gerarTextoSimples();
     navigator.clipboard.writeText(texto).then(() => {
   // feedback não bloqueante
-  setMensagemCopiar('Respostas copiadas para a área de transferência!');
+  setMensagemCopiar('Respostas copiadas! Cole no campo de mensagem (Ctrl+V no PC ou toque e "Colar" no celular).');
   if (timeoutRef.current) clearTimeout(timeoutRef.current);
   timeoutRef.current = setTimeout(() => setMensagemCopiar(''), 3500);
     });
@@ -60,11 +60,11 @@ const PerguntasForm = ({ perguntas }) => {
     const texto = gerarTextoSimples();
     navigator.clipboard.writeText(texto).then(() => {
       // mostrar feedback não bloqueante e abrir WhatsApp
-      setMensagemCopiar('Respostas copiadas para a área de transferência!');
+  setMensagemCopiar('Respostas copiadas! Ao abrir o WhatsApp cole no campo de mensagem (Ctrl+V ou toque e "Colar") e envie ao professor.');
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => setMensagemCopiar(''), 3500);
       const numero = '5531994662740';
-      const mensagemPadrao = encodeURIComponent('Cole aqui as suas respostas');
+  const mensagemPadrao = encodeURIComponent('Cole aqui as respostas copiadas (pressione Ctrl+V no PC ou toque e "Colar" no celular) e envie para o professor.');
       const link = `https://api.whatsapp.com/send?phone=${numero}&text=${mensagemPadrao}`;
       window.open(link, '_blank');
     });
