@@ -1,4 +1,4 @@
-# 1.7 Conclusão módulo 1
+# Conclusão módulo 1
 
 Este primeiro módulo do curso teve como objetivo lançar as bases para uma jornada vocal consciente e saudável. Exploramos desde a definição da música e do canto, até a fisiologia do aparelho fonador, passando por práticas essenciais como alongamento, aquecimento e desaquecimento vocal, e a importância da respiração correta. Desmistificamos crenças comuns sobre o canto, fornecendo informações valiosas para um início de jornada musical sólido.
 

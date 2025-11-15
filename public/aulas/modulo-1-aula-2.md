@@ -1,4 +1,4 @@
-# 1.2 O aparelho fonador
+# O aparelho fonador
 
  Como o canto envolve o uso do corpo como instrumento, é fundamental compreender os músculos, órgãos e estruturas fisiológicas envolvidos na produção dos sons.
 

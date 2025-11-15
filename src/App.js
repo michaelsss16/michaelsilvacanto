@@ -23,14 +23,32 @@ export default function App() {
     return localStorage.getItem("autenticado") === "true";
   });
 
-  function login() {
+  const [nomeUsuario, setNomeUsuario] = useState(() => {
+    try {
+      const raw = localStorage.getItem('usuario_logado');
+      if (raw) return JSON.parse(raw).nome || '';
+    } catch (err) {
+      return '';
+    }
+    return '';
+  });
+
+  function login(nome) {
     setAutenticado(true);
     localStorage.setItem("autenticado", "true");
+    try {
+      localStorage.setItem('usuario_logado', JSON.stringify({ nome }));
+    } catch (err) {
+      // ignore
+    }
+    setNomeUsuario(nome || '');
   }
 
   function logout() {
     setAutenticado(false);
     localStorage.removeItem("autenticado");
+    localStorage.removeItem('usuario_logado');
+    setNomeUsuario('');
   }
 
   function RotaProtegida({ children }) {
@@ -39,7 +57,7 @@ export default function App() {
 
   return (
     <HashRouter>
-      <Header autenticado={autenticado} onLogout={logout} />
+  <Header autenticado={autenticado} onLogout={logout} nomeUsuario={nomeUsuario} />
       <main>
         <Routes>
           {/* Públicas */}

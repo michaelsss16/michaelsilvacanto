@@ -36,7 +36,23 @@ const PerguntasForm = ({ perguntas }) => {
 
   // Gera texto simples, de leitura natural, para copiar/enviar
   const gerarTextoSimples = () => {
+    // tentar obter nome do usuário salvo no localStorage
+    let nomeAluno = '';
+    try {
+      const raw = localStorage.getItem('usuario_logado');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        nomeAluno = parsed && parsed.nome ? parsed.nome : '';
+      }
+    } catch (err) {
+      nomeAluno = '';
+    }
+
     const linhas = ['Questionário de aprendizado', ''];
+    if (nomeAluno) {
+      linhas.unshift(`Aluno: ${nomeAluno}`);
+      linhas.unshift('');
+    }
     perguntas.forEach((p, index) => {
       const resposta = respostas[p.id] || '(sem resposta)';
       linhas.push(`${index + 1}. ${p.texto}`);

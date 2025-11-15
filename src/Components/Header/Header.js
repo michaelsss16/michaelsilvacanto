@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"; // 1. Importar useEffect
 import { Link, NavLink, useLocation } from "react-router-dom"; // 1. Importar useLocation
 import './Header.css';
 
-const Header = ({ autenticado, onLogout }) => {
+const Header = ({ autenticado, onLogout, nomeUsuario }) => {
   const [menuAberto, setMenuAberto] = useState(false);
   const [submenuTecladoAberto, setSubmenuTecladoAberto] = useState(false);
 
@@ -88,7 +88,12 @@ const Header = ({ autenticado, onLogout }) => {
 
         <div className="auth-links">
           {!autenticado && <Link to="/login" className="login-link">Login</Link>}
-          {autenticado && <button onClick={onLogout} className="logout-button">Sair</button>}
+          {autenticado && (
+            <div className="user-area" style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+              {nomeUsuario && <span className="user-name">{nomeUsuario}</span>}
+              <button onClick={onLogout} className="logout-button">Sair</button>
+            </div>
+          )}
         </div>
       </div>
     </header>

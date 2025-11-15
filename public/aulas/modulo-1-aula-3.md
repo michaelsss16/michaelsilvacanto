@@ -1,4 +1,4 @@
-# 1.3 Alongamento corporal
+# Alongamento corporal
 
  Antes de iniciar qualquer sessão de canto, seja curta ou longa, é essencial realizar o alongamento corporal. Esse preparo ajuda a liberar tensões musculares que podem limitar a plena utilização da voz, garantindo maior liberdade e eficiência vocal.
 
