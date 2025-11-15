@@ -344,6 +344,16 @@ export const M1A7 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-7.md" />
+            <section className="module-conclusion mt-8">
+                <h2>Conclusão do Módulo 1</h2>
+                <p>Assista ao vídeo resumo de encerramento do módulo abaixo. Ele traz os principais pontos e orientações para os próximos estudos.</p>
+                <div className="video-container" style={{marginTop: '1rem'}}>
+                    <video controls style={{maxWidth: '100%', borderRadius: '8px'}}>
+                        <source src="/michaelsilvacanto/Videos/Video conclusão módulo 1.mp4" type="video/mp4" />
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            </section>
             <LessonNav modulo="1" aulaAtual={7} totalAulas={7} />
         </main>);
 };
