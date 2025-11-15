@@ -1,0 +1,35 @@
+/* Estilos para a navegação entre aulas */
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.lesson-nav .btn {
+  padding: 0.5rem 1rem;
+  background: #1f2937; /* cinza escuro */
+  color: #fff;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: background 0.15s ease-in-out, transform 0.08s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.lesson-nav .btn:hover {
+  background: #111827;
+  transform: translateY(-1px);
+}
+
+.lesson-nav .btn:active {
+  transform: translateY(0);
+}
+
+.lesson-nav .spacer {
+  flex: 1;
+}
+
+.lesson-nav .user-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

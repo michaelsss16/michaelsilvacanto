@@ -1,5 +1,6 @@
 import MarkdownRenderer from "../Components/MarkdownRenderer";
 import PerguntasForm from "../Components/PerguntasForm";
+import LessonNav from "../Components/LessonNav";
 
 export const M1A1 = () => {
     const perguntas = [
@@ -81,6 +82,7 @@ export const M1A1 = () => {
 </audio>
 
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="1" aulaAtual={1} totalAulas={7} />
         </main>
     );
 }
@@ -168,6 +170,7 @@ export const M1A2 = () => {
 </audio>
 
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="1" aulaAtual={2} totalAulas={7} />
         </main>
     );
 }
@@ -213,6 +216,7 @@ export const M1A3 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-3.md" />
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="1" aulaAtual={3} totalAulas={7} />
         </main>
     );
 }
@@ -267,6 +271,7 @@ export const M1A4 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-4.md" />
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="1" aulaAtual={4} totalAulas={7} />
         </main>
     );
 }
@@ -321,6 +326,7 @@ export const M1A5 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-5.md" />
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="1" aulaAtual={5} totalAulas={7} />
         </main>
     );
 }
@@ -329,6 +335,7 @@ export const M1A6 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-6.md" />
+            <LessonNav modulo="1" aulaAtual={6} totalAulas={7} />
         </main>
     );
 };
@@ -337,5 +344,6 @@ export const M1A7 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-7.md" />
+            <LessonNav modulo="1" aulaAtual={7} totalAulas={7} />
         </main>);
 };

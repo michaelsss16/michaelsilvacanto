@@ -1,5 +1,6 @@
 import MarkdownRenderer from "../Components/MarkdownRenderer";
 import PerguntasForm from "../Components/PerguntasForm";
+import LessonNav from "../Components/LessonNav";
 
 export const M3A1 = () =>
 {
@@ -49,6 +50,7 @@ return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-1.md" />
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="3" aulaAtual={1} totalAulas={3} />
         </main>
     );
 }
@@ -101,6 +103,7 @@ return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-2.md" />
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="3" aulaAtual={2} totalAulas={3} />
         </main>
     );
 }
@@ -153,6 +156,7 @@ return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-3.md" />
             <PerguntasForm perguntas={perguntas} />
+            <LessonNav modulo="3" aulaAtual={3} totalAulas={3} />
         </main>
     );
 }
