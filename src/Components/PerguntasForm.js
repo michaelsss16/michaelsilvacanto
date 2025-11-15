@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const STORAGE_KEY = 'respostas_perguntas';
 
 const PerguntasForm = ({ perguntas }) => {
   const [respostas, setRespostas] = useState({});
   const [mostrarRespostasCorretas, setMostrarRespostasCorretas] = useState(false);
+  const [mensagemCopiar, setMensagemCopiar] = useState('');
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     if (perguntas && perguntas.length > 0) {
@@ -32,25 +34,35 @@ const PerguntasForm = ({ perguntas }) => {
     }));
   };
 
-  const gerarMarkdown = () => {
-    const markdown = [`## Questionário de aprendizado`, ''];
-    perguntas.forEach(p => {
-      const resposta = respostas[p.id] || '';
-      markdown.push(`### ${p.texto}\n\n${resposta}\n`);
+  // Gera texto simples, de leitura natural, para copiar/enviar
+  const gerarTextoSimples = () => {
+    const linhas = ['Questionário de aprendizado', ''];
+    perguntas.forEach((p, index) => {
+      const resposta = respostas[p.id] || '(sem resposta)';
+      linhas.push(`${index + 1}. ${p.texto}`);
+      linhas.push(`Resposta: ${resposta}`);
+      linhas.push('');
     });
-    return markdown.join('\n');
+    return linhas.join('\n');
   };
 
-  const copiarMarkdown = () => {
-    const markdown = gerarMarkdown();
-    navigator.clipboard.writeText(markdown).then(() => {
-      alert('Respostas copiadas para a área de transferência!');
+  const copiarRespostas = () => {
+    const texto = gerarTextoSimples();
+    navigator.clipboard.writeText(texto).then(() => {
+  // feedback não bloqueante
+  setMensagemCopiar('Respostas copiadas para a área de transferência!');
+  if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  timeoutRef.current = setTimeout(() => setMensagemCopiar(''), 3500);
     });
   };
 
   const enviarWhatsApp = () => {
-    const markdown = gerarMarkdown();
-    navigator.clipboard.writeText(markdown).then(() => {
+    const texto = gerarTextoSimples();
+    navigator.clipboard.writeText(texto).then(() => {
+      // mostrar feedback não bloqueante e abrir WhatsApp
+      setMensagemCopiar('Respostas copiadas para a área de transferência!');
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setMensagemCopiar(''), 3500);
       const numero = '5531994662740';
       const mensagemPadrao = encodeURIComponent('Cole aqui as suas respostas');
       const link = `https://api.whatsapp.com/send?phone=${numero}&text=${mensagemPadrao}`;
@@ -58,12 +70,24 @@ const PerguntasForm = ({ perguntas }) => {
     });
   };
 
+  // limpa timeout ao desmontar
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   const verificarRespostas = () => {
     setMostrarRespostasCorretas(true);
   };
 
   return (
     <div className="p-4 space-y-6">
+      {mensagemCopiar && (
+        <div className="fixed top-4 right-4 bg-black text-white px-4 py-2 rounded shadow">
+          {mensagemCopiar}
+        </div>
+      )}
       <h2 className="text-2xl font-bold">Questionário de aprendizado</h2>
 
       {perguntas.map(pergunta => (
@@ -99,7 +123,7 @@ const PerguntasForm = ({ perguntas }) => {
 
       <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-6">
         <button
-          onClick={copiarMarkdown}
+          onClick={copiarRespostas}
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
           Copiar respostas
