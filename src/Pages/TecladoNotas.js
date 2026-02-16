@@ -57,9 +57,10 @@ const useToneSynth = (synthType = 'FMSynth') => {
 export const TecladoNotas = () => {
   const [oitavaInicial, setOitavaInicial] = useState(3);
   const [oitavaFinal, setOitavaFinal] = useState(4);
-  const [ultimaNotaTocada, setUltimaNotaTocada] = useState(null);
+  const [sequenciaNotas, setSequenciaNotas] = useState([]); // array das notas sorteadas
   const [notaRevelada, setNotaRevelada] = useState(false);
   const [duracaoNota, setDuracaoNota] = useState(0.5); // Duração em segundos
+  const [quantidadeNotas, setQuantidadeNotas] = useState(1); // Quantas notas aleatórias gerar
   const [escalaAtual, setEscalaAtual] = useState('cromatica'); // Escala padrão: cromática
   const synth = useToneSynth('FMSynth');
 
@@ -89,18 +90,30 @@ export const TecladoNotas = () => {
 
   const handleTocarNotaAleatoria = () => {
     if (notasDisponiveis.length === 0) return;
-    const indiceAleatorio = Math.floor(Math.random() * notasDisponiveis.length);
-    const notaSorteada = notasDisponiveis[indiceAleatorio];
-    
-    setUltimaNotaTocada(notaSorteada);
+
+    const sequencia = [];
+    for (let i = 0; i < quantidadeNotas; i++) {
+      const indiceAleatorio = Math.floor(Math.random() * notasDisponiveis.length);
+      const notaSorteada = notasDisponiveis[indiceAleatorio];
+      sequencia.push(notaSorteada);
+
+      // toca cada nota com pequeno atraso para ouvir a sequência
+      setTimeout(() => {
+        tocarNota(notaSorteada);
+      }, i * (duracaoNota * 1000 + 100));
+    }
+
+    setSequenciaNotas(sequencia);
     setNotaRevelada(false);
-    tocarNota(notaSorteada);
   };
 
   const handleRepetirNota = () => {
-    if (ultimaNotaTocada) {
-      tocarNota(ultimaNotaTocada);
-    }
+    if (sequenciaNotas.length === 0) return;
+    sequenciaNotas.forEach((nota, idx) => {
+      setTimeout(() => {
+        tocarNota(nota);
+      }, idx * (duracaoNota * 1000 + 100));
+    });
   };
 
   const handleRevelarNota = () => {
@@ -180,26 +193,40 @@ export const TecladoNotas = () => {
             />
           </div>
 
+          <div className="control-group">
+            <label htmlFor="quantidade-notas">Quantidade ({quantidadeNotas} {quantidadeNotas === 1 ? 'nota' : 'notas'}):</label>
+            <input
+              type="range"
+              id="quantidade-notas"
+              min="1"
+              max="10"
+              step="1"
+              value={quantidadeNotas}
+              onChange={(e) => setQuantidadeNotas(Number(e.target.value))}
+              style={{ flex: 1 }}
+            />
+          </div>
+
           <div className="button-group">
             <button onClick={handleTocarNotaAleatoria} aria-label="Tocar uma nova nota aleatória">
               Tocar Nota Aleatória
             </button>
-            <button onClick={handleRepetirNota} disabled={!ultimaNotaTocada} aria-label="Repetir a última nota tocada">
-              Repetir Nota
+            <button onClick={handleRepetirNota} disabled={sequenciaNotas.length === 0} aria-label="Repetir as notas sorteadas">
+              Repetir {sequenciaNotas.length > 1 ? 'Notas' : 'Nota'}
             </button>
-            <button onClick={handleRevelarNota} disabled={!ultimaNotaTocada} aria-label="Revelar qual foi a última nota tocada">
-              Revelar Nota {ultimaNotaTocada && !notaRevelada ? '(escondida)' : ''}
+            <button onClick={handleRevelarNota} disabled={sequenciaNotas.length === 0} aria-label="Revelar as notas sorteadas">
+              Revelar {sequenciaNotas.length > 1 ? 'Notas' : 'Nota'} {sequenciaNotas.length > 0 && !notaRevelada ? '(escondida)' : ''}
             </button>
           </div>
 
-          {ultimaNotaTocada && (
+          {sequenciaNotas.length > 0 && (
             <div className="revelacao-nota" aria-live="polite" style={{marginTop: '16px'}}>
               <p style={{margin: '0 0 8px 0', color: '#3f51b5', fontWeight: 'bold'}}>
                 Status: {notaRevelada ? '✓ Revelada' : '● Escondida'}
               </p>
               {notaRevelada && (
                 <p style={{margin: '0', fontSize: '1.3rem', color: '#1a237e'}}>
-                  A nota tocada foi: <strong style={{fontSize: '1.5rem'}}>{ultimaNotaTocada}</strong>
+                  As notas tocadas foram: <strong style={{fontSize: '1.5rem'}}>{sequenciaNotas.join(', ')}</strong>
                 </p>
               )}
             </div>
