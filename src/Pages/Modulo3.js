@@ -49,7 +49,7 @@ const perguntas = [
 return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-1.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m3a1" />
             <LessonNav modulo="3" aulaAtual={1} totalAulas={3} />
         </main>
     );
@@ -102,7 +102,7 @@ const perguntas = [
 return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-2.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m3a2" />
             <LessonNav modulo="3" aulaAtual={2} totalAulas={3} />
         </main>
     );
@@ -155,7 +155,7 @@ const perguntas = [
 return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-3.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m3a3" />
             <LessonNav modulo="3" aulaAtual={3} totalAulas={3} />
         </main>
     );

@@ -48,7 +48,7 @@ const perguntas = [
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-1.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m2a1" />
             <LessonNav modulo="2" aulaAtual={1} totalAulas={5} />
         </main>
     );
@@ -100,7 +100,7 @@ const perguntas = [
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-2.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m2a2" />
             <LessonNav modulo="2" aulaAtual={2} totalAulas={5} />
         </main>
     );
@@ -178,7 +178,7 @@ export const M2A3 = () => {
 	return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-3.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m2a3" />
             <LessonNav modulo="2" aulaAtual={3} totalAulas={5} />
         </main>
     );
@@ -229,7 +229,7 @@ export const M2A4 = () => {
 	return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-4.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m2a4" />
             <LessonNav modulo="2" aulaAtual={4} totalAulas={5} />
         </main>
     );
@@ -275,7 +275,7 @@ export const M2A5 = () => {
 	return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-5.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m2a5" />
             <LessonNav modulo="2" aulaAtual={5} totalAulas={5} />
         </main>
     );

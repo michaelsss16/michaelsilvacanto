@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const STORAGE_KEY = 'respostas_perguntas';
+const STORAGE_KEY_PREFIX = 'respostas_perguntas_';
 
-const PerguntasForm = ({ perguntas }) => {
+const PerguntasForm = ({ perguntas, pagId = 'default' }) => {
   const [respostas, setRespostas] = useState({});
   const [mostrarRespostasCorretas, setMostrarRespostasCorretas] = useState(false);
   const [mensagemCopiar, setMensagemCopiar] = useState('');
   const timeoutRef = useRef(null);
 
+  // Gera a chave de armazenamento única para esta página
+  const storageKey = `${STORAGE_KEY_PREFIX}${pagId}`;
+
   useEffect(() => {
     if (perguntas && perguntas.length > 0) {
-      const salvas = localStorage.getItem(STORAGE_KEY);
+      const salvas = localStorage.getItem(storageKey);
       if (salvas) {
         try {
           setRespostas(JSON.parse(salvas));
@@ -19,13 +22,13 @@ const PerguntasForm = ({ perguntas }) => {
         }
       }
     }
-  }, [perguntas]);
+  }, [perguntas, storageKey]);
 
   useEffect(() => {
     if (Object.keys(respostas).length > 0) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(respostas));
+      localStorage.setItem(storageKey, JSON.stringify(respostas));
     }
-  }, [respostas]);
+  }, [respostas, storageKey]);
 
   const handleChange = (id, valor) => {
     setRespostas(prev => ({

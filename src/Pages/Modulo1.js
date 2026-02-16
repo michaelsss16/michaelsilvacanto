@@ -81,7 +81,7 @@ export const M1A1 = () => {
   Seu navegador não suporta o elemento de áudio.
 </audio>
 
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m1a1" />
             <LessonNav modulo="1" aulaAtual={1} totalAulas={7} />
         </main>
     );
@@ -169,7 +169,7 @@ export const M1A2 = () => {
   Seu navegador não suporta o elemento de áudio.
 </audio>
 
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m1a2" />
             <LessonNav modulo="1" aulaAtual={2} totalAulas={7} />
         </main>
     );
@@ -215,7 +215,7 @@ export const M1A3 = () => {
 
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-3.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m1a3" />
             <LessonNav modulo="1" aulaAtual={3} totalAulas={7} />
         </main>
     );
@@ -270,7 +270,7 @@ export const M1A4 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-4.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m1a4" />
             <LessonNav modulo="1" aulaAtual={4} totalAulas={7} />
         </main>
     );
@@ -325,7 +325,7 @@ export const M1A5 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-5.md" />
-            <PerguntasForm perguntas={perguntas} />
+            <PerguntasForm perguntas={perguntas} pagId="m1a5" />
             <LessonNav modulo="1" aulaAtual={5} totalAulas={7} />
         </main>
     );
