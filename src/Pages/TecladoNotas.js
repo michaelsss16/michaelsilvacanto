@@ -4,6 +4,21 @@ import { Piano } from '../Components/Piano';
 
 // --- DEFINIÇÕES GLOBAIS ---
 const notasBase = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+const escalas = {
+  cromatica: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
+  maiorC: ['C', 'D', 'E', 'F', 'G', 'A', 'B'],
+  maiorCSharp: ['C#', 'D#', 'F', 'F#', 'G#', 'A#', 'C'],
+  maiorD: ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'],
+  maiorDSharp: ['D#', 'F', 'G', 'G#', 'A#', 'C', 'D'],
+  maiorE: ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'],
+  maiorF: ['F', 'G', 'A', 'A#', 'C', 'D', 'E'],
+  maiorFSharp: ['F#', 'G#', 'A#', 'B', 'C#', 'D#', 'F'],
+  maiorG: ['G', 'A', 'B', 'C', 'D', 'E', 'F#'],
+  maiorGSharp: ['G#', 'A#', 'C', 'C#', 'D#', 'F', 'G'],
+  maiorA: ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
+  maiorASharp: ['A#', 'C', 'D', 'D#', 'F', 'G', 'A'],
+  maiorB: ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#'],
+};
 const sintetizadores = {
   AMSynth: Tone.AMSynth,
   FMSynth: Tone.FMSynth,
@@ -45,11 +60,17 @@ export const TecladoNotas = () => {
   const [ultimaNotaTocada, setUltimaNotaTocada] = useState(null);
   const [notaRevelada, setNotaRevelada] = useState(false);
   const [duracaoNota, setDuracaoNota] = useState(0.5); // Duração em segundos
+  const [escalaAtual, setEscalaAtual] = useState('cromatica'); // Escala padrão: cromática
   const synth = useToneSynth('FMSynth');
 
   const tocarNota = useCallback((nota) => {
     synth.tocarNota(nota, duracaoNota);
   }, [synth, duracaoNota]);
+
+  // Reset da revelação quando a escala mudar
+  useEffect(() => {
+    setNotaRevelada(false);
+  }, [escalaAtual]);
 
   useEffect(() => {
     if (oitavaFinal < oitavaInicial) {
@@ -58,12 +79,13 @@ export const TecladoNotas = () => {
   }, [oitavaInicial, oitavaFinal]);
 
   const notasDisponiveis = useMemo(() => {
+    const notasDaEscala = escalas[escalaAtual] || escalas.cromatica;
     const notas = [];
     for (let oitava = oitavaInicial; oitava <= oitavaFinal; oitava++) {
-      notasBase.forEach(n => notas.push(`${n}${oitava}`));
+      notasDaEscala.forEach(n => notas.push(`${n}${oitava}`));
     }
     return notas;
-  }, [oitavaInicial, oitavaFinal]);
+  }, [oitavaInicial, oitavaFinal, escalaAtual]);
 
   const handleTocarNotaAleatoria = () => {
     if (notasDisponiveis.length === 0) return;
@@ -126,6 +148,25 @@ export const TecladoNotas = () => {
           </div>
 
           <div className="control-group">
+            <label htmlFor="escala">Escala:</label>
+            <select id="escala" value={escalaAtual} onChange={(e) => setEscalaAtual(e.target.value)}>
+              <option value="cromatica">Cromática (C, C#, D, D#, E, F, F#, G, G#, A, A#, B)</option>
+              <option value="maiorC">Escala Maior em C</option>
+              <option value="maiorCSharp">Escala Maior em C#</option>
+              <option value="maiorD">Escala Maior em D</option>
+              <option value="maiorDSharp">Escala Maior em D#</option>
+              <option value="maiorE">Escala Maior em E</option>
+              <option value="maiorF">Escala Maior em F</option>
+              <option value="maiorFSharp">Escala Maior em F#</option>
+              <option value="maiorG">Escala Maior em G</option>
+              <option value="maiorGSharp">Escala Maior em G#</option>
+              <option value="maiorA">Escala Maior em A</option>
+              <option value="maiorASharp">Escala Maior em A#</option>
+              <option value="maiorB">Escala Maior em B</option>
+            </select>
+          </div>
+
+          <div className="control-group">
             <label htmlFor="duracao-nota">Duração ({duracaoNota.toFixed(1)}s):</label>
             <input
               type="range"
@@ -147,14 +188,21 @@ export const TecladoNotas = () => {
               Repetir Nota
             </button>
             <button onClick={handleRevelarNota} disabled={!ultimaNotaTocada} aria-label="Revelar qual foi a última nota tocada">
-              Revelar Nota
+              Revelar Nota {ultimaNotaTocada && !notaRevelada ? '(escondida)' : ''}
             </button>
           </div>
 
-          {notaRevelada && ultimaNotaTocada && (
-            <p className="revelacao-nota" aria-live="polite">
-              A nota tocada foi: <strong>{ultimaNotaTocada}</strong>
-            </p>
+          {ultimaNotaTocada && (
+            <div className="revelacao-nota" aria-live="polite" style={{marginTop: '16px'}}>
+              <p style={{margin: '0 0 8px 0', color: '#3f51b5', fontWeight: 'bold'}}>
+                Status: {notaRevelada ? '✓ Revelada' : '● Escondida'}
+              </p>
+              {notaRevelada && (
+                <p style={{margin: '0', fontSize: '1.3rem', color: '#1a237e'}}>
+                  A nota tocada foi: <strong style={{fontSize: '1.5rem'}}>{ultimaNotaTocada}</strong>
+                </p>
+              )}
+            </div>
           )}
         </fieldset>
 
