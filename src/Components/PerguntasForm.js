@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const STORAGE_KEY_PREFIX = 'respostas_perguntas_';
 
-const PerguntasForm = ({ perguntas, pagId = 'default' }) => {
+const PerguntasForm = ({ perguntas, pagId = 'default', nomeAula = '' }) => {
   const [respostas, setRespostas] = useState({});
   const [mostrarRespostasCorretas, setMostrarRespostasCorretas] = useState(false);
   const [mensagemCopiar, setMensagemCopiar] = useState('');
@@ -52,6 +52,10 @@ const PerguntasForm = ({ perguntas, pagId = 'default' }) => {
     }
 
     const linhas = ['Questionário de aprendizado', ''];
+    if (nomeAula) {
+      linhas.push(`Aula: ${nomeAula}`);
+      linhas.push('');
+    }
     if (nomeAluno) {
       linhas.unshift(`Aluno: ${nomeAluno}`);
       linhas.unshift('');

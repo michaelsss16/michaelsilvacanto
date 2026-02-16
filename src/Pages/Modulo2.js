@@ -48,7 +48,7 @@ const perguntas = [
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-1.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m2a1" />
+            <PerguntasForm perguntas={perguntas} pagId="m2a1" nomeAula="Módulo 2 - Aula 1: Propriedades do Som" />
             <LessonNav modulo="2" aulaAtual={1} totalAulas={5} />
         </main>
     );
@@ -100,7 +100,7 @@ const perguntas = [
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-2.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m2a2" />
+            <PerguntasForm perguntas={perguntas} pagId="m2a2" nomeAula="Módulo 2 - Aula 2: Tessitura Vocal" />
             <LessonNav modulo="2" aulaAtual={2} totalAulas={5} />
         </main>
     );
@@ -178,7 +178,7 @@ export const M2A3 = () => {
 	return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-3.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m2a3" />
+            <PerguntasForm perguntas={perguntas} pagId="m2a3" nomeAula="Módulo 2 - Aula 3: Melodia, Harmonia e Ritmo" />
             <LessonNav modulo="2" aulaAtual={3} totalAulas={5} />
         </main>
     );
@@ -229,7 +229,7 @@ export const M2A4 = () => {
 	return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-4.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m2a4" />
+            <PerguntasForm perguntas={perguntas} pagId="m2a4" nomeAula="Módulo 2 - Aula 4: Afinação Vocal" />
             <LessonNav modulo="2" aulaAtual={4} totalAulas={5} />
         </main>
     );
@@ -275,7 +275,7 @@ export const M2A5 = () => {
 	return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-5.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m2a5" />
+            <PerguntasForm perguntas={perguntas} pagId="m2a5" nomeAula="Módulo 2 - Aula 5: Dicção e Articulação no Canto" />
             <LessonNav modulo="2" aulaAtual={5} totalAulas={5} />
         </main>
     );

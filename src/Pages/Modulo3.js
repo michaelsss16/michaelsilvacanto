@@ -49,7 +49,7 @@ const perguntas = [
 return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-1.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m3a1" />
+            <PerguntasForm perguntas={perguntas} pagId="m3a1" nomeAula="Módulo 3 - Aula 1: Registros Vocais" />
             <LessonNav modulo="3" aulaAtual={1} totalAulas={3} />
         </main>
     );
@@ -102,7 +102,7 @@ const perguntas = [
 return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-2.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m3a2" />
+            <PerguntasForm perguntas={perguntas} pagId="m3a2" nomeAula="Módulo 3 - Aula 2: Modos Fonatórios" />
             <LessonNav modulo="3" aulaAtual={2} totalAulas={3} />
         </main>
     );
@@ -155,7 +155,7 @@ const perguntas = [
 return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-3-aula-3.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m3a3" />
+            <PerguntasForm perguntas={perguntas} pagId="m3a3" nomeAula="Módulo 3 - Aula 3: Variações de Timbre" />
             <LessonNav modulo="3" aulaAtual={3} totalAulas={3} />
         </main>
     );

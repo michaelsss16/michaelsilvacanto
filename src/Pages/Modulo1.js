@@ -81,7 +81,7 @@ export const M1A1 = () => {
   Seu navegador não suporta o elemento de áudio.
 </audio>
 
-            <PerguntasForm perguntas={perguntas} pagId="m1a1" />
+            <PerguntasForm perguntas={perguntas} pagId="m1a1" nomeAula="Módulo 1 - Aula 1: Introdução à Música e Canto" />
             <LessonNav modulo="1" aulaAtual={1} totalAulas={7} />
         </main>
     );
@@ -169,7 +169,7 @@ export const M1A2 = () => {
   Seu navegador não suporta o elemento de áudio.
 </audio>
 
-            <PerguntasForm perguntas={perguntas} pagId="m1a2" />
+            <PerguntasForm perguntas={perguntas} pagId="m1a2" nomeAula="Módulo 1 - Aula 2: O Aparelho Vocal" />
             <LessonNav modulo="1" aulaAtual={2} totalAulas={7} />
         </main>
     );
@@ -215,7 +215,7 @@ export const M1A3 = () => {
 
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-3.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m1a3" />
+            <PerguntasForm perguntas={perguntas} pagId="m1a3" nomeAula="Módulo 1 - Aula 3: Alongamento Corporal" />
             <LessonNav modulo="1" aulaAtual={3} totalAulas={7} />
         </main>
     );
@@ -270,7 +270,7 @@ export const M1A4 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-4.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m1a4" />
+            <PerguntasForm perguntas={perguntas} pagId="m1a4" nomeAula="Módulo 1 - Aula 4: Aquecimento e Desaquecimento Vocal" />
             <LessonNav modulo="1" aulaAtual={4} totalAulas={7} />
         </main>
     );
@@ -325,7 +325,7 @@ export const M1A5 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-5.md" />
-            <PerguntasForm perguntas={perguntas} pagId="m1a5" />
+            <PerguntasForm perguntas={perguntas} pagId="m1a5" nomeAula="Módulo 1 - Aula 5: Técnica de Respiração no Canto" />
             <LessonNav modulo="1" aulaAtual={5} totalAulas={7} />
         </main>
     );
