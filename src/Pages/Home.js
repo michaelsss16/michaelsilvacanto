@@ -25,6 +25,17 @@ const Home = () => {
       </div>
 
       <div>
+        <h3>Ferramentas Interativas - Teclado Virtual</h3>
+        <p>Complementando o aprendizado teórico dos módulos, disponibilizamos ferramentas interativas de teclado virtual para você treinar na prática. Essas ferramentas ajudam a desenvolver sua percepção auditiva, reconhecimento de notas, compreensão de escalas e formação de acordes. Cada seção oferece uma interface intuitiva para praticar e consolidar seus conhecimentos musicais.</p>
+        <p>Acesse as seguintes ferramentas:</p>
+        <ul>
+          <li><a href="/#/teclado/notas">Teclado Virtual - Treinamento de Notas</a> - Identifique e reconheça as notas musicais no teclado</li>
+          <li><a href="/#/teclado/escalas">Teclado Virtual - Treinamento de Escalas</a> - Explore e pratique diferentes escalas musicais</li>
+          <li><a href="/#/teclado/acordes">Teclado Virtual - Treinamento de Acordes</a> - Aprenda a formar e identificar acordes</li>
+        </ul>
+      </div>
+
+      <div>
         <h3>Depoimentos</h3>
         <div>
           <p>"Esse curso mudou minha forma de cantar. Hoje me sinto muito mais confiante!" – Ana M.</p>
