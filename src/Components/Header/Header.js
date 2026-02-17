@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"; // 1. Importar useEffect
-import { Link, NavLink, useLocation } from "react-router-dom"; // 1. Importar useLocation
+import React, { useState, useEffect } from "react"; 
+import { Link, NavLink, useLocation } from "react-router-dom"; 
 import './Header.css';
 
 const Header = ({ autenticado, onLogout, nomeUsuario }) => {

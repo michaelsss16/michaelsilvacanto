@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink} from "react-router-dom"; 
 import Modulos from "./Modulos.js";
 import {WhatsappButton }from "../Components/Contatos.js"
 
@@ -29,10 +30,9 @@ const Home = () => {
         <p>Complementando o aprendizado teórico dos módulos, disponibilizamos ferramentas interativas de teclado virtual para você treinar na prática. Essas ferramentas ajudam a desenvolver sua percepção auditiva, reconhecimento de notas, compreensão de escalas e formação de acordes. Cada seção oferece uma interface intuitiva para praticar e consolidar seus conhecimentos musicais.</p>
         <p>Acesse as seguintes ferramentas:</p>
         <ul>
-          <li><a href="/#/teclado/notas">Teclado Virtual - Treinamento de Notas</a> - Identifique e reconheça as notas musicais no teclado</li>
-          <li><a href="/#/teclado/escalas">Teclado Virtual - Treinamento de Escalas</a> - Explore e pratique diferentes escalas musicais</li>
-          <li><a href="/#/teclado/acordes">Teclado Virtual - Treinamento de Acordes</a> - Aprenda a formar e identificar acordes</li>
-        </ul>
+                  <li><NavLink to="/teclado/notas">Estudo de notas musicais</NavLink></li>
+                  <li><NavLink to="/teclado/acordes">Estudo de acordes</NavLink></li>
+                  <li><NavLink to="/teclado/escalas">Estudo de escalas</NavLink></li>        </ul>
       </div>
 
       <div>
