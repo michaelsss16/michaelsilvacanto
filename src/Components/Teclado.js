@@ -161,6 +161,7 @@ export const Teclado = () => {
     // calculamos a duração em segundos para a nota se manter tocando
     // até a próxima. Com bpm lento, isso adapta o sustain automaticamente.
     const notaDuration = delayMs / 1000; // em segundos
+    const prepMs = delayMs * 0.5; // pausa extra para preparação
 
     for (let r = 0; r < rep; r++) {
       // repetir primeira nota para dar tempo de preparação
@@ -170,6 +171,8 @@ export const Teclado = () => {
         }
         synth.triggerAttackRelease(notasEscala[0], notaDuration);
         await new Promise((res) => setTimeout(res, delayMs));
+        // tempo entre primeira nota e sua repetição
+        await new Promise((res) => setTimeout(res, prepMs));
       }
 
       for (let nota of notasEscala) {
@@ -179,6 +182,11 @@ export const Teclado = () => {
         }
         synth.triggerAttackRelease(nota, notaDuration);
         await new Promise((res) => setTimeout(res, delayMs));
+      }
+
+      // pausa entre as repetições da escala
+      if (r < rep - 1) {
+        await new Promise((res) => setTimeout(res, prepMs));
       }
     }
   };
