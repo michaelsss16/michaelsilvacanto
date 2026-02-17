@@ -158,13 +158,26 @@ export const Teclado = () => {
       return notasBase[notaIdx] + (baseOitava + oitavaExtra);
     });
   
+    // calculamos a duração em segundos para a nota se manter tocando
+    // até a próxima. Com bpm lento, isso adapta o sustain automaticamente.
+    const notaDuration = delayMs / 1000; // em segundos
+
     for (let r = 0; r < rep; r++) {
+      // repetir primeira nota para dar tempo de preparação
+      if (notasEscala.length > 0) {
+        if (idAtual !== sequenciaIdRef.current) {
+          return;
+        }
+        synth.triggerAttackRelease(notasEscala[0], notaDuration);
+        await new Promise((res) => setTimeout(res, delayMs));
+      }
+
       for (let nota of notasEscala) {
         // Verifica se outra sequência foi iniciada. Se sim, interrompe a atual.
         if (idAtual !== sequenciaIdRef.current) {
           return;
         }
-        synth.triggerAttackRelease(nota, "8n");
+        synth.triggerAttackRelease(nota, notaDuration);
         await new Promise((res) => setTimeout(res, delayMs));
       }
     }
