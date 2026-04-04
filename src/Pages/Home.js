@@ -6,10 +6,10 @@ import {WhatsappButton }from "../Components/Contatos.js"
 const Home = () => {
   return (
     <div>
-        <h1>Bem-vindo ao seu espaço de desenvolvimento vocal!</h1>
+        <h1>Michael Silva - Music Space</h1>
 
       <div>
-        <h2>Aprenda a cantar com um método completo e prático</h2>
+        <h2>Aprenda a cantar sem complicações</h2>
         <p>Olá! Sou Michael Silva, e criei este espaço para te guiar em sua jornada no canto. Aqui você encontrará um curso de canto completo, dividido em módulos que te levarão do básico ao avançado, além de exercícios práticos e playbacks para você treinar e aprimorar sua voz.</p>
       </div>
 
