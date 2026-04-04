@@ -10,16 +10,7 @@
 
  Ademais, abordará  sobre a importância da saúde vocal, alongamento, aquecimento e desaquecimento vocal. Práticas que se tornarão um hábito em nossas vidas como cantores.
 
-## Aulas do módulo 1
-
-1. Introdução ao canto
-2. O aparelho fonador
-3. Alongamento corporal
-4. Aquecimento e desaquecimento vocal
-5. Respiração
-6. Mitos e verdades sobre o canto
-
-# 1.1  Introdução ao canto
+# Introdução ao canto
 
  Se você está lendo esse material, e está interessado em aprender a cantar, certamente já possui alguma relação com a música. A música está presente em nossas vidas ainda que não percebamos. Mas, afinal, o que é a música?
 
@@ -71,4 +62,3 @@
  Na voz falada, o foco está na clareza e na inteligibilidade da mensagem. A melodia e o ritmo assumem papéis secundários, enquanto a articulação precisa e a entonação adequada garantem que o ouvinte compreenda as nuances da fala. A respiração, por sua vez, segue um padrão natural, adaptando-se ao ritmo da conversa.
 
  Já a voz cantada se transforma em um instrumento musical, explorando toda a sua extensão e expressividade. Melodias, harmonias e ritmos ganham destaque, enquanto a articulação se torna mais flexível para acomodar as nuances musicais. A respiração, nesse caso, é controlada e profunda, fornecendo sustentação para as notas longas e projeção para a voz. Além disso, a expressão é fortemente utilizada para transmitir a mensagem da letra cantada, apresentando sentimentos e emoções com o uso de dinâmica e técnicas vocais.
-
