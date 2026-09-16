@@ -1,6 +1,7 @@
 import MarkdownRenderer from "../Components/MarkdownRenderer";
 import PerguntasForm from "../Components/PerguntasForm";
 import LessonNav from "../Components/LessonNav";
+import LessonActions from "../Components/LessonActions";
 
 export const M2A1 = () => {
 const perguntas = [
@@ -49,6 +50,7 @@ const perguntas = [
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-1.md" />
             <PerguntasForm perguntas={perguntas} pagId="m2a1" nomeAula="Módulo 2 - Aula 1: Propriedades do Som" />
+            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-2-aula-1.md" />
             <LessonNav modulo="2" aulaAtual={1} totalAulas={5} />
         </main>
     );
@@ -101,6 +103,7 @@ const perguntas = [
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-2.md" />
             <PerguntasForm perguntas={perguntas} pagId="m2a2" nomeAula="Módulo 2 - Aula 2: Tessitura Vocal" />
+            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-2-aula-2.md" />
             <LessonNav modulo="2" aulaAtual={2} totalAulas={5} />
         </main>
     );
@@ -179,6 +182,7 @@ export const M2A3 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-3.md" />
             <PerguntasForm perguntas={perguntas} pagId="m2a3" nomeAula="Módulo 2 - Aula 3: Melodia, Harmonia e Ritmo" />
+            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-2-aula-3.md" />
             <LessonNav modulo="2" aulaAtual={3} totalAulas={5} />
         </main>
     );
@@ -230,6 +234,7 @@ export const M2A4 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-4.md" />
             <PerguntasForm perguntas={perguntas} pagId="m2a4" nomeAula="Módulo 2 - Aula 4: Afinação Vocal" />
+            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-2-aula-4.md" />
             <LessonNav modulo="2" aulaAtual={4} totalAulas={5} />
         </main>
     );
@@ -276,6 +281,7 @@ export const M2A5 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-2-aula-5.md" />
             <PerguntasForm perguntas={perguntas} pagId="m2a5" nomeAula="Módulo 2 - Aula 5: Dicção e Articulação no Canto" />
+            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-2-aula-5.md" />
             <LessonNav modulo="2" aulaAtual={5} totalAulas={5} />
         </main>
     );
