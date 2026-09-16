@@ -1,23 +1,39 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import { Link } from "react-router-dom";
 
 const Modulo = ({ titulo, aulas, basePath }) => {
   const [aberto, setAberto] = useState(false);
+  
+  // Cria um ID único para conectar o botão à lista que ele controla
+  const listaId = useId(); 
 
   return (
     <div className="border rounded-2xl shadow-md p-4 mb-4">
       <button
         onClick={() => setAberto(!aberto)}
-        className="w-full text-left text-xl font-semibold flex justify-between items-center"
+        aria-expanded={aberto}
+        aria-controls={listaId}
+        className="w-full text-left text-xl font-semibold flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md"
       >
         {titulo}
-        <span>{aberto ? "−" : "+"}</span>
+        {/* Escondemos o ícone visual do leitor de tela */}
+        <span aria-hidden="true" className="ml-4 text-2xl">
+          {aberto ? "−" : "+"}
+        </span>
       </button>
+      
       {aberto && (
-        <ul className="mt-2 pl-4 list-disc">
+        <ul 
+          id={listaId} 
+          role="list" // Garante que navegadores mantenham a semântica de lista sem o list-disc
+          className="mt-4 flex flex-col gap-2"
+        >
           {aulas.map((aula, index) => (
-            <li key={index} className="my-1">
-              <Link to={`${basePath}/aula-${index + 1}`} className="text-blue-600 hover:underline">
+            <li key={index}>
+              <Link 
+                to={`${basePath}/aula-${index + 1}`} 
+                className="block text-blue-600 hover:underline py-2 px-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md"
+              >
                 {aula}
               </Link>
             </li>
@@ -64,7 +80,7 @@ export default function Modulos () {
       basePath: "/modulo-3"
     },
     {
-      titulo: "Módulo 4: Ornamentos vocais[em construção]",
+      titulo: "Módulo 4: Ornamentos vocais [em construção]",
       aulas: [
         "Vibrato",
         "Fry e wisper voice",
@@ -76,7 +92,7 @@ export default function Modulos () {
       basePath: "/modulo-4"
     },
     {
-      titulo: "Módulo 5: Canto coral[em construção]",
+      titulo: "Módulo 5: Canto coral [em construção]",
       aulas: [
         "Timbragem e canto uníssono",
         "Backing vocal",
