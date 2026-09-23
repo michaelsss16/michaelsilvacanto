@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
+import { getPageTitleFromPath } from '../Util/pageTitles';
 
 const LessonActions = () => {
   const [shareStatus, setShareStatus] = useState('');
 
+  const getCurrentLessonTitle = () => {
+    const path = window.location.hash
+      ? window.location.hash.replace(/^#/, '')
+      : window.location.pathname;
+
+    return getPageTitleFromPath(path) || 'Aula de canto';
+  };
+
   const shareLesson = async () => {
     const lessonUrl = window.location.href;
-    const title = document.title || 'Aula de canto';
+    const title = getCurrentLessonTitle();
     const shareText = `Confira esta aula: ${title}\n${lessonUrl}`;
 
     try {
       if (navigator.share) {
         await navigator.share({
           title,
-          text: 'Confira esta aula do curso de canto.',
+          text: shareText,
           url: lessonUrl,
         });
         setShareStatus('Aula compartilhada!');

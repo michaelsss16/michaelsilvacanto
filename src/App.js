@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Routes, Route, HashRouter, Navigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, HashRouter, Navigate, useLocation } from "react-router-dom";
+import { getPageTitleFromPath } from "./Util/pageTitles";
 
 import Footer from "./Components/Footer.js";
 import Home from './Pages/Home.js';
@@ -17,6 +18,17 @@ import Login from './Pages/Login.js';
 import { M1A1, M1A2, M1A3, M1A4, M1A5, M1A6, M1A7 } from './Pages/Modulo1.js';
 import { M2A1, M2A2, M2A3, M2A4, M2A5} from './Pages/Modulo2.js';
 import { M3A1, M3A2, M3A3} from './Pages/Modulo3.js';
+
+function RouteTitleSync() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const nextTitle = getPageTitleFromPath(location.pathname);
+    document.title = nextTitle;
+  }, [location.pathname]);
+
+  return null;
+}
 
 export default function App() {
   const [autenticado, setAutenticado] = useState(() => {
@@ -57,7 +69,8 @@ export default function App() {
 
   return (
     <HashRouter>
-  <Header autenticado={autenticado} onLogout={logout} nomeUsuario={nomeUsuario} />
+      <RouteTitleSync />
+      <Header autenticado={autenticado} onLogout={logout} nomeUsuario={nomeUsuario} />
       <main>
         <Routes>
           {/* Públicas */}
