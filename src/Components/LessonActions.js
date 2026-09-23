@@ -1,40 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-const LessonActions = ({ filePath }) => {
-  const [content, setContent] = useState('');
-  const [copyStatus, setCopyStatus] = useState('');
+const LessonActions = () => {
   const [shareStatus, setShareStatus] = useState('');
-
-  useEffect(() => {
-    if (!filePath) {
-      return;
-    }
-
-    fetch(filePath)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Erro ao carregar o arquivo Markdown');
-        }
-        return res.text();
-      })
-      .then(setContent)
-      .catch((err) => {
-        console.error(err);
-        setContent('');
-      });
-  }, [filePath]);
-
-  const copyLessonText = async () => {
-    try {
-      await navigator.clipboard.writeText(content);
-      setCopyStatus('A aula foi copiada!');
-      window.setTimeout(() => setCopyStatus(''), 2000);
-    } catch (err) {
-      console.error('Erro ao copiar aula:', err);
-      setCopyStatus('Não foi possível copiar.');
-      window.setTimeout(() => setCopyStatus(''), 3000);
-    }
-  };
 
   const shareLesson = async () => {
     const lessonUrl = window.location.href;
@@ -79,19 +46,10 @@ const LessonActions = ({ filePath }) => {
         >
           Compartilhar aula
         </button>
-
-        <button
-          type="button"
-          onClick={copyLessonText}
-          disabled={!content}
-          className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
-        >
-          Copiar aula
-        </button>
       </div>
 
-      {(copyStatus || shareStatus) && (
-        <span className="text-sm text-gray-600">{copyStatus || shareStatus}</span>
+      {shareStatus && (
+        <span className="text-sm text-gray-600">{shareStatus}</span>
       )}
     </div>
   );

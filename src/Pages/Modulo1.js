@@ -83,7 +83,7 @@ export const M1A1 = () => {
 </audio>
 
             <PerguntasForm perguntas={perguntas} pagId="m1a1" nomeAula="Módulo 1 - Aula 1: Introdução à Música e Canto" />
-            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-1-aula-1.md" />
+            <LessonActions />
             <LessonNav modulo="1" aulaAtual={1} totalAulas={7} />
         </main>
     );
@@ -172,7 +172,7 @@ export const M1A2 = () => {
 </audio>
 
             <PerguntasForm perguntas={perguntas} pagId="m1a2" nomeAula="Módulo 1 - Aula 2: O Aparelho Vocal" />
-            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-1-aula-2.md" />
+            <LessonActions />
             <LessonNav modulo="1" aulaAtual={2} totalAulas={7} />
         </main>
     );
@@ -219,7 +219,7 @@ export const M1A3 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-3.md" />
             <PerguntasForm perguntas={perguntas} pagId="m1a3" nomeAula="Módulo 1 - Aula 3: Alongamento Corporal" />
-            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-1-aula-3.md" />
+            <LessonActions />
             <LessonNav modulo="1" aulaAtual={3} totalAulas={7} />
         </main>
     );
@@ -275,7 +275,7 @@ export const M1A4 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-4.md" />
             <PerguntasForm perguntas={perguntas} pagId="m1a4" nomeAula="Módulo 1 - Aula 4: Aquecimento e Desaquecimento Vocal" />
-            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-1-aula-4.md" />
+            <LessonActions />
             <LessonNav modulo="1" aulaAtual={4} totalAulas={7} />
         </main>
     );
@@ -331,7 +331,7 @@ export const M1A5 = () => {
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-5.md" />
             <PerguntasForm perguntas={perguntas} pagId="m1a5" nomeAula="Módulo 1 - Aula 5: Técnica de Respiração no Canto" />
-            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-1-aula-5.md" />
+            <LessonActions />
             <LessonNav modulo="1" aulaAtual={5} totalAulas={7} />
         </main>
     );
@@ -341,7 +341,7 @@ export const M1A6 = () => {
     return (
         <main>
             <MarkdownRenderer filePath="/michaelsilvacanto/aulas/modulo-1-aula-6.md" />
-            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-1-aula-6.md" />
+            <LessonActions />
             <LessonNav modulo="1" aulaAtual={6} totalAulas={7} />
         </main>
     );
@@ -361,7 +361,7 @@ export const M1A7 = () => {
                     </video>
                 </div>
             </section>
-            <LessonActions filePath="/michaelsilvacanto/aulas/modulo-1-aula-7.md" />
+            <LessonActions />
             <LessonNav modulo="1" aulaAtual={7} totalAulas={7} />
         </main>);
 };
