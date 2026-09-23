@@ -9,13 +9,13 @@ const LessonActions = () => {
       ? window.location.hash.replace(/^#/, '')
       : window.location.pathname;
 
-    return getPageTitleFromPath(path) || 'Aula de canto';
+    return getPageTitleFromPath(path) || 'MS Music Space';
   };
 
   const shareLesson = async () => {
     const lessonUrl = window.location.href;
     const title = getCurrentLessonTitle();
-    const shareText = `Confira esta aula: ${title}\n${lessonUrl}`;
+    const shareText = `Confira essa aula de canto: ${title}\n${lessonUrl}`;
 
     try {
       if (navigator.share) {
@@ -24,7 +24,7 @@ const LessonActions = () => {
           text: shareText,
           url: lessonUrl,
         });
-        setShareStatus('Aula compartilhada!');
+        setShareStatus('Página compartilhada!');
         window.setTimeout(() => setShareStatus(''), 2000);
         return;
       }
